@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Student;
 class StudentController extends Controller
 {
+    private $columns = ['StudentName','age'];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $Student = Student::get();
+        return view('Students', compact('Student'));
     }
 
     /**
@@ -19,7 +21,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('addStudent');
     }
 
     /**
@@ -36,7 +38,8 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $Student= Student::findOrFail($id);
+        return view ('showStudent',compact ('Student'));
     }
 
     /**
@@ -44,7 +47,8 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Student = Student ::findOrFail($id);
+        return view ('editStudent ',compact ('Student '));
     }
 
     /**
@@ -52,14 +56,18 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Student::where('id',$id)->update($request->only($this->columns));
+        return redirect ('Student');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+      public function destroy(string $id)
+      //public function destroy(Request $request)
     {
-        //
+        $id =$request->id;
+        Student::where('id',$id)->delete();
+        return redirect ('Student'); 
     }
 }
