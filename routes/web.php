@@ -9,7 +9,10 @@ Route::get('test20',[MyController::class,'my_data']);
 Route::post('insertClient',[ClientController::class,'store'])->name('insertClient');
 Route::get('addClient',[ClientController::class,'create'])->name('addClient');
 Route::get('clients',[ClientController::class,'index'])->name('clients');
-Route::get('addStudent',[ClientController::class,'create'])->name('addStudent');
+Route::get('editClient/{id}',[ClientController::class,'edit'])->name('editClient');
+Route::put('updateClient/{id}',[ClientController::class,'update'])->name('updateClient');
+Route::get('showClient/{id}',[ClientController::class,'show'])->name('showClient');
+Route::delete('delClient/{id}',[ClientController::class,'destroy'])->name('delClient');
 Route::get('/', function () {
     return view('welcome');
 });
