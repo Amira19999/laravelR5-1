@@ -17,11 +17,19 @@ Route::delete('delStudent',[ StudentController::class,'destroy'])->name('delStud
 Route::post('insertClient',[ClientController::class,'store'])->name('insertClient');
 Route::get('addClient',[ClientController::class,'create'])->name('addClient');
 Route::get('clients',[ClientController::class,'index'])->name('clients');
+<<<<<<< HEAD
 Route::get('editClient/{id}',[ClientController::class,'edit'])->name('editClient');
 Route::put('updateClient/{id}',[ClientController::class,'update'])->name('updateClient');
 Route::get('showClient/{id}',[ClientController::class,'show'])->name('showClient');
 Route::delete('delClient',[ClientController::class,'destroy'])->name('delClient');
 //Route::delete('delClient/{id}',[ClientController::class,'destroy'])->name('delClient');
+=======
+Route::get('editClients/{id}',[ClientController::class,'edit'])->name('editClients');
+Route::put('updateClients/{id}',[ClientController::class,'update'])->name('updateClients');
+Route::get('showClient/{id}',[ClientController::class,'show'])->name('showClient');
+Route::delete('delClient',[ClientController::class,'destroy'])->name('delClient');
+
+>>>>>>> 4e7be649a13bcf26637459ffb86bb44d65f21c6a
 Route::get('/', function () {
     return view('welcome');
 });

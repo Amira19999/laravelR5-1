@@ -46,16 +46,26 @@ class ClientController extends Controller
     public function show(string $id)
     {
         $client = Client::findOrFail($id);
+<<<<<<< HEAD
         return view ('showClient',compact ('client'));
+=======
+        return view('showClient', compact('client'));
+>>>>>>> 4e7be649a13bcf26637459ffb86bb44d65f21c6a
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
+<<<<<<< HEAD
 
     {    $client = Client::findOrFail($id);
         return view ('editClient',compact ('client'));
+=======
+    {
+        $client = Client::findOrFail($id);
+        return view('editClient', compact('client'));
+>>>>>>> 4e7be649a13bcf26637459ffb86bb44d65f21c6a
     }
 
     /**
@@ -63,19 +73,30 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
+<<<<<<< HEAD
         Client::where('id',$id)->update($request->only($this->columns));
         return redirect ('clients');
+=======
+        Client::where('id', $id)->update($request->only($this->columns));
+        return redirect('clients');
+>>>>>>> 4e7be649a13bcf26637459ffb86bb44d65f21c6a
     }
     
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
+<<<<<<< HEAD
         $id =$request->id;
         Client::where('id',$id)->delete();
         return redirect ('clients'); 
+=======
+        $id = $request->id;
+        Client::where('id',$id)->delete();
+        return redirect('clients');
+>>>>>>> 4e7be649a13bcf26637459ffb86bb44d65f21c6a
     }
 
 }
