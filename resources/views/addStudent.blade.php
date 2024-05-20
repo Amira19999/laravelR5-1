@@ -30,9 +30,14 @@
 <div class="container" style="margin-left: 20px ">
   <h2>Insert Student</h2>
 
-  <form action="{{ route('insertStudent') }}"method="POST">
+  <form action="{{route('insertStudent')}}"method="POST">
     @csrf
     <label for="StudentName">Studentname:</label><br>
+<p style="color:red ">
+    @error(Studentname)
+       {{ $message }}
+    @enderror
+</p>
     <input type="text" id="StudentName" name="StudentName" class="form-control"><br>
     <label for="age">age:</label><br>
     <input type="text" id="age" name="age" class="form-control"><br><br>

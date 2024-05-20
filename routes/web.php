@@ -3,33 +3,35 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\StudentsController;                                           //Student
+use App\Http\Controllers\StudentController;                                           //Student
 Route::get('test20',[MyController::class,'my_data']);
 Route::get('addStudent',[StudentController::class,'create'])->name('addStudent');     //Student
 Route::get('Students',[StudentController::class,'index'])->name('Students');
+
 Route::post('insertStudent',[StudentController::class,'store'])->name('insertStudent');
 Route::get('editStudent/{id}',[StudentController::class,'edit'])->name('editStudent');
 Route::put('updateStudent/{id}',[StudentController::class,'update'])->name('updateStudent');
 Route::get('showStudent/{id}',[StudentController::class,'show'])->name('showStudent');
 Route::delete('delStudent',[ StudentController::class,'destroy'])->name('delStudent'); 
-
-
+Route::delete('forceDeleteStudent',[ StudentController::class,'forceDelete'])->name('forceDeleteStudent');
+Route::view('Students',[ StudentController::class]); 
+Route::get('trashedStudent',[StudentController::class,'trash'])->name('trashedStudent');
+Route::get('restoreStudent/{id}',[StudentController::class,'restore'])->name('restoreStudent');
 Route::post('insertClient',[ClientController::class,'store'])->name('insertClient');
 Route::get('addClient',[ClientController::class,'create'])->name('addClient');
 Route::get('clients',[ClientController::class,'index'])->name('clients');
-<<<<<<< HEAD
+
 Route::get('editClient/{id}',[ClientController::class,'edit'])->name('editClient');
 Route::put('updateClient/{id}',[ClientController::class,'update'])->name('updateClient');
 Route::get('showClient/{id}',[ClientController::class,'show'])->name('showClient');
 Route::delete('delClient',[ClientController::class,'destroy'])->name('delClient');
-//Route::delete('delClient/{id}',[ClientController::class,'destroy'])->name('delClient');
-=======
+Route::delete('delClient/{id}',[ClientController::class,'destroy'])->name('delClient');
 Route::get('editClients/{id}',[ClientController::class,'edit'])->name('editClients');
 Route::put('updateClients/{id}',[ClientController::class,'update'])->name('updateClients');
 Route::get('showClient/{id}',[ClientController::class,'show'])->name('showClient');
 Route::delete('delClient',[ClientController::class,'destroy'])->name('delClient');
 
->>>>>>> 4e7be649a13bcf26637459ffb86bb44d65f21c6a
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -55,6 +57,7 @@ Route::prefix('cars')->group(function(){
 Route::get('form1',function(){
     return view('form1');
 });
+
 
 Route::post('recForm1', [MyController::class,'receiveData'])->name('receiveForm1');
 
