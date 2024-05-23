@@ -7,6 +7,7 @@
     <title>Show {{ $Student-> StudentName }}</title>
 </head>
 <body>
+<p><img src="{{ asset('assets/images/' . $student->image)  }}" alt=""></p>
     <h1><strong>Student: </strong>{{ $Student->StudentName }}</h1>
     <hr>
     <h2><strong>age: </strong>{{ $Student->age}}</h2>

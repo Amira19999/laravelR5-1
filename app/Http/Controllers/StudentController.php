@@ -29,9 +29,10 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = $this->errMsg();
         $data = $request->validate([
             'StudentName' => 'requed|max:100|min:5',
-             'adg'=>'requed|min:6',
+             'phone'=>'requed|min:6',
 
         ]);
 
@@ -63,6 +64,11 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $messages = $this->errMsg();
+        $data = $request->validate([
+            'studenttName' => 'required|max:100|min:5',
+            'age' => 'required|min:3',
+        ], $messages);
         Student::where('id',$id)->update($request->only($this->columns));
         return redirect ('Student');
     }
@@ -93,6 +99,15 @@ class StudentController extends Controller
         Student::where('id',$id)->restore();
         return redirect ('Student'); 
     } 
+
+
+     
+     public function errMsg(){
+        return [
+            'studentName.required' => 'The student name is missed, please insert',
+            'studentName.min' => 'length less than 5, please insert more chars',
+        ];
+    }
 
     public function forceDelete(Request $request)
       

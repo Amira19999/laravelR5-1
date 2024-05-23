@@ -31,6 +31,7 @@
   <h2>Insert Student</h2>
 
   <form action="{{route('insertStudent')}}"method="POST">
+  <form action="{{route('insertStudent')}}"method="POST" enctype="multipart/form-data">
     @csrf
     <label for="StudentName">Studentname:</label><br>
 <p style="color:red ">
@@ -38,9 +39,19 @@
        {{ $message }}
     @enderror
 </p>
-    <input type="text" id="StudentName" name="StudentName" class="form-control"><br>
+    <input type="text" id="StudentName" name="StudentName" class="form-control" value="{{ old('studentName') }}"><br>
     <label for="age">age:</label><br>
-    <input type="text" id="age" name="age" class="form-control"><br><br>
+    <p style="color: red">
+      @error('age')
+        {{ $message }}
+      @enderror
+    </p>
+    <input type="text" id="age" name="age" class="form-control"value="{{ old('age') }}"><br><br>
+    
+
+    <label for="image">Image:</label><br>
+    <input type="file" id="image" name="image" class="form-control"><br><br>
+    
     <input type="submit" value="Submit">
   </form> 
 </div>

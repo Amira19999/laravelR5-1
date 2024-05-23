@@ -10,6 +10,12 @@ class Student extends Model
     use HasFactory;
     protected $fillable = [
         'StudentsName',
-        'age'
+        'age',
+        'image',
     ];
+        // public function getActiveStatus()
+    // {
+    //     return $this->active ? 'Yes' : 'No';
+    // }
+
 }

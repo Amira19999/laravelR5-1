@@ -19,7 +19,13 @@
     <label for="StudentName">Student name:</label><br>
     <input type="text" id="StudentName" name="StudentName" class="form-control" value="{{ $Student->StudentName }}"><br>
     <label for="age">age:</label><br>
-    <input type="text" id="phone" name="age" class="form-control" value="{{ $Student->age }}"><br><br>
+    <input type="text" id="adg" name="age" class="form-control" value="{{ $Student->age }}"><br><br>
+
+    <p><img src="{{ asset('assets/images/' . $student->image)  }}" alt=""></p>
+    <label for="image">Image:</label><br>
+    <input type="file" id="image" name="image" class="form-control"><br><br>
+
+    <input type="submit" value="Submit">
    
   </form> 
 </div>

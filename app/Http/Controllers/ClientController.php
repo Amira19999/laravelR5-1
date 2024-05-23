@@ -37,9 +37,23 @@ class ClientController extends Controller
         // $client->email = $request->email;
         // $client->website = $request->website;
         // $client->save();
-        Client::create($request->only($this->columns));
+
+       // 'ClientName' => 'requed|max:100|min:5',
+      //  'phone'=>'requed|min:6',
+        //'email'=>'requed|min:6',
+
+            'clientName' => 'required|max:100|min:5',
+            'phone' => 'required|min:11',
+            'email' => 'required|email:rfc',
+            'website' => 'required',
+            'city' => 'required|max:30'
+     
+
+        $data['active'] = isset($request->active);
+        Client::create($data);
         return redirect('clients');
     }
+    
 
     /**
      * Display the specified resource.
@@ -74,11 +88,16 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        Client::where('id',$id)->update($request->only($this->columns));
-        return redirect ('clients');
-
-        Client::where('id', $id)->update($request->only($this->columns));
+        Client::where('id', $id)->update ($request->only($this->columns));
+        $masage
+        $data = $request->validate([
+            'clientName' => 'required|max:100|min:5',
+            'phone' => 'required|min:11',
+            'email' => 'required|email:rfc',
+            'website' => 'required',
+            'Image'=>'required',
+        ]$masage);
+        Client::create($data);
         return redirect('clients');
 
     }
@@ -97,6 +116,13 @@ class ClientController extends Controller
         $id = $request->id;
         Client::where('id',$id)->delete();
         return redirect('clients');
+
+        //error
+        public function errMsg(){
+            return[
+               'clientName'.required=>the client name is missed
+            ]
+        }
 
     }
 
