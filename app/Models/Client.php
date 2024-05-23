@@ -15,7 +15,8 @@ class Client extends Model
         'email',
         'website',
         'Edit',
-        'active'
+        'active',
+        'image',
     ];
     public function getActiveStatus()
     {

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('website', 100);
             $table->string('city', 30);
             $table->boolean('active');
-            $table->boolean('Image');
+            $table->boolean('Image',100);
             $table->softDeletes();
             $table->timestamps();
         });
