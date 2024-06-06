@@ -57,7 +57,7 @@
     <input type="text" id="website" name="website" class="form-control" value="{{ old('website') }}"><br><br>
     </p>
     <select name="city" id="city" class="form-control" value="{{ old('city') }}">
-    <option value="">Please Select City</option>
+   <option value="">Please Select City</option>
     <option value="Cairo" {{ old('City') == 'Cairo' ? 'selected' : '' }}>Cairo</option>
     <option value="Giza" {{ old('City') == 'Giza' ? 'selected' : '' }}>Giza</option>
     <option value="Alex" {{ old('City') == 'Alex' ? 'selected' : '' }}>Alex</option>
@@ -69,7 +69,7 @@
     </select>
     <br><br>
     <label for="active">Active:</label><br>
-    <input type="checkbox" id="active" name="active" class="form-control"><br><br>
+   
     <input type="checkbox" id="active" name="active" class="form-control" {{ old('active') ? 'checked' : '' }}><br><br>
     <label for="image">Image:</label><br>
     <input type="file" id="image" name="image" class="form-control"><br><br>

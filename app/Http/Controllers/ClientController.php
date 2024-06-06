@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Traits\UploadFile;
+use UploadFile;
 
 class ClientController extends Controller
 {
@@ -42,7 +44,7 @@ class ClientController extends Controller
       //  'phone'=>'requed|min:6',
         //'email'=>'requed|min:6',
 
-        $messages = $this->errMsg();
+    $messages = $this->errMsg();
 
         $data = $request->validate([
             'clientName' => 'required|max:100|min:5',
@@ -115,9 +117,9 @@ class ClientController extends Controller
             'website' => 'required',
         ]);
 
-    ], $messages);
-            'Image'=>'required',
-        ]$masage);
+    //], $messages);
+       //  'Image'=>'required',
+     // ]$masage);
         Client::where('id', $id)->update($data);
         return redirect('clients');
 
@@ -141,7 +143,7 @@ class ClientController extends Controller
         //error
         public function errMsg(){
             return[
-                'clientName.required' => 'The client name is missed, please insert',
+               'clientName.required' => 'The client name is missed, please insert',
             'clientName.min' => 'length less than 5, please insert more chars',
             ]
         }

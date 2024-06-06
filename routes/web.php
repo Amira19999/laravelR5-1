@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\StudentController;                                           //Student
+
+
 Route::get('test20',[MyController::class,'my_data']);
 Route::get('addStudent',[StudentController::class,'create'])->name('addStudent');     //Student
 Route::get('Students',[StudentController::class,'index'])->name('Students');
