@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\teacherp;
 class Student extends Model
 {
     use HasFactory;
@@ -12,6 +12,7 @@ class Student extends Model
         'StudentsName',
         'age',
         'image',
+        'Subject',
     ];
         // public function getActiveStatus()
     // {

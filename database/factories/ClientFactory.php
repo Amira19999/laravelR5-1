@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
  */
-class todosFactory extends Factory
+class ClientFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,19 +22,10 @@ class todosFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
             'website' => fake()->url(),
-            'city' => fake()->city(),
-            'image' => fake()->imageUrl(640, 480),
+            'city_id' => fake()->numberBetween(1,20),
+            'image' => fake()->image(),
             'active' => fake()->numberBetween(0, 1),
             'address' => fake()->address(),
-
-           // 'clientName'=> fake()->sentence(mt_rand(3,5)),
-            //'phone'=>fake()->text(),
-            //'email'=>fake()->realtext(400),
-            //'website'=>fake()->realtext(400),
-            //'city'=>fake()->realtext(400),
-           // 'active'=>fake()->randomElement([true,fulse]) ? now() : null,
-           
-           
         ];
     }
 }

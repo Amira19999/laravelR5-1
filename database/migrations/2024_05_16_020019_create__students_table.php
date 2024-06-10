@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('_student', function (Blueprint $table) {
             $table->id();
-            $table->string('clientName', 100);
-            $table->string('phone', 25);
-            $table->string('email', 100);
-            $table->string('website', 100);
-            $table->foreignId('city_id')->constrained('cities');
-            $table->boolean('active');
-            $table->boolean('image',100);
+            $table->string('StudentName', 100);
+            $table->string('adg', 25);
+            $table->string('image', 100);
+            $table->foreignId('Subject_id')->constrained('teacher');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +27,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('_student');
     }
+
+    public function teacher () {
+   
+        return $this->belongsToMany(teacher::class);
+    }
+
 };
