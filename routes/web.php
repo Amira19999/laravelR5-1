@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\StudentController;                                           //Student
+use App\Mail\ContactClient;
 
 
 Route::get('test20',[MyController::class,'my_data']);
@@ -21,7 +22,7 @@ Route::get('trashedStudent',[StudentController::class,'trash'])->name('trashedSt
 Route::get('restoreStudent/{id}',[StudentController::class,'restore'])->name('restoreStudent');
 Route::post('insertClient',[ClientController::class,'store'])->name('insertClient');
 Route::get('addClient',[ClientController::class,'create'])->name('addClient');
-Route::get('clients',[ClientController::class,'index'])->name('clients');
+Route::get('clients',[ClientController::class,'index'])->middleware('verified')->name('clients');
 
 Route::get('editClient/{id}',[ClientController::class,'edit'])->name('editClient');
 Route::put('updateClient/{id}',[ClientController::class,'update'])->name('updateClient');
@@ -67,3 +68,7 @@ Route::post('recForm1', [MyController::class,'receiveData'])->name('receiveForm1
 //     // return 'The required is not found';
 //     return redirect('/');
 // });
+Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('sendClientMail', [MyController::class,'sendClientMail']);

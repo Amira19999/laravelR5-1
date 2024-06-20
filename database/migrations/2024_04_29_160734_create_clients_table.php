@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('website', 100);
             $table->foreignId('city_id')->constrained('cities');
             $table->boolean('active');
-            $table->boolean('image',100);
+            $table->string('image',100);
             $table->softDeletes();
             $table->timestamps();
         });
