@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_student', function (Blueprint $table) {
+        Schema::create('student', function (Blueprint $table) {
             $table->id();
             $table->string('StudentName', 100);
             $table->string('adg', 25);
             $table->string('image', 100);
-            $table->foreignId('Subject_id')->constrained('teacher');
+            // $table->foreignId('Subject_id')->constrained('teacher');
             $table->softDeletes();
             $table->timestamps();
         });
